@@ -16,4 +16,13 @@ describe Fatura do
     expect(invoice.return_date).to eq '          '
     expect(invoice.payment_type).to eq 'Boleto'
   end
+
+  it 'Converte 1 json em 1 objeto e salva em txt' do
+    invoice = Fatura.to_convert('invoices-iugu/fatura001.json')
+    
+    expect(File.read('data/data.txt')).to include('b7d933ca217964802cce9abc9a75da96372fbfef')
+    expect(File.read('data/data.txt')).to include('Pendente')
+    expect(File.read('data/data.txt')).to include('25/04/2020')
+    expect(File.read('data/data.txt')).to include('Boleto')
+  end
 end
