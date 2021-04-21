@@ -18,11 +18,8 @@ class Fatura
                return_date: cobranca['return_date'],
                payment_type: cobranca['payment_type'])
 
-    escrita = File.open('data/data.txt', 'w+')
-    escrita.write(cobranca.token)
-    escrita.write(cobranca.status)
-    escrita.write(cobranca.payment_date)
-    escrita.write(cobranca.payment_type)
+    escrita = File.open("data/#{Time.now.to_i}_#{cobranca.payment_type}.txt", 'w+')
+    escrita.write(cobranca.token + cobranca.status + cobranca.payment_type + cobranca.payment_date)
     escrita.close
   end
 end
