@@ -11,7 +11,14 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
-#
+
+require 'active_support/all'
+PROJECT_ROOT = File.expand_path('..', __dir__)
+
+Dir.glob(File.join(PROJECT_ROOT, 'lib', '*.rb')).each do |file|
+ autoload File.basename(file, '.rb').camelize, file
+end
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
