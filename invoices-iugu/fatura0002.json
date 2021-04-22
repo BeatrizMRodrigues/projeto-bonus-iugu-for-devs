@@ -2,5 +2,6 @@
   "token": "8b4b300d3b994cede1c92b799150195f0193a698" ,
   "status": "Pendente",
   "payment_date": "20/04/2020",
-  "payment_type": "Cartão de crédito"
+  "payment_type": "Cartão de crédito",
+  "invoice_amount": "R$ 350,00"
 }

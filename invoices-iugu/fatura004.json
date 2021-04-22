@@ -2,5 +2,6 @@
   "token": "f5d3a6243562ad4ac26a151e2e46f1e76bb3f14b",
   "status": "Pendente",
   "payment_date": "22/04/2020",
-  "payment_type": "Boleto"
+  "payment_type": "Boleto",
+  "invoice_amount": "R$ 20,00"
 }
