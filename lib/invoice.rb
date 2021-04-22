@@ -18,9 +18,10 @@ class Fatura
                           payment_type: cobranca['payment_type'],
                           invoice_amount: cobranca['invoice_amount'])
 
-    
+    invoice_amount = cobranca.invoice_amount.gsub(/[R$,]/, 'R$' => '', ',' => '')
+    invoice_amount = '%010d'%invoice_amount
     escrita = File.open("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_#{cobranca.payment_type}_emissao.txt", 'w+')
-    escrita.write('B' + cobranca.token + cobranca.payment_date + cobranca.payment_type + cobranca.status)
+    escrita.write('B' + cobranca.token + cobranca.payment_date + cobranca.payment_type + cobranca.status + invoice_amount)
     escrita.close
   end
 end
