@@ -2,7 +2,7 @@
 
 class Invoice
 
-  attr_accessor :token, :status, :due_date, :payment_method, :amount
+  attr_reader :token, :status, :due_date, :payment_method, :amount
 
   def initialize(token:, status:, due_date:, payment_method:, amount:)
     @token = token
@@ -13,10 +13,15 @@ class Invoice
   end
 
   def self.order(fatura)
-    invoice_sum = 0
-    amount_sum = 0
     data = File.open("data/#{Time.now.strftime('%Y%m%d%H%M%S')}_Boleto_emissao.txt", 'w+')
     data.write("H 00000 \n")
+    body(data, fatura)
+    data.close
+  end
+
+  def self.body(data, fatura)
+    invoice_sum = 0
+    amount_sum = 0
     JSON.parse(File.read(fatura), symbolize_names: true).each do |order|
       new(**order)
       data.write("B #{order[:token]} #{due_date(order)} #{amount_validates(order)} #{status(order)}  \n")
@@ -25,7 +30,6 @@ class Invoice
     end
     footer(data, amount_sum)
     header(data, invoice_sum)
-    data.close
   end
 
   def self.amount_validates(order)
