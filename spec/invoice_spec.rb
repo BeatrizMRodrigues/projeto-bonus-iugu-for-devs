@@ -18,7 +18,7 @@ describe Fatura do
   end
 
   it 'Converte 1 json em 1 objeto e salva em txt' do
-    invoice = Fatura.to_convert('invoices-iugu/fatura001.json')
+    invoice = Fatura.order('invoices-iugu/fatura001.json')
     
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('b7d933ca217964802cce9abc9a75da96372fbfef')
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Pendente')
@@ -26,12 +26,12 @@ describe Fatura do
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Boleto')
   end
 
-  it 'Converte 1 json em 1 objeto e salva em txt' do
-    invoice = Fatura.to_convert('invoices-iugu/fatura003.json')
+  it 'Converte 1 json em mais objetos e salva em txt' do
+    invoice = Fatura.order('invoices-iugu/fatura004.json')
     
-    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Pix_emissao.txt")).to include('a7baa680f588afa01406d236f93a602008baa3f7')
-    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Pix_emissao.txt")).to include('Pendente')
-    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Pix_emissao.txt")).to include('25/04/2020')
-    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Pix_emissao.txt")).to include('Pix')
+    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('b7d933ca217964802cce9abc9a75da96372fbfef')
+    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Pendente')
+    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('25/04/2020')
+    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Boleto')
   end
 end
