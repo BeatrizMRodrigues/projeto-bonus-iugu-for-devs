@@ -11,16 +11,17 @@ class Invoice
   end
 
   def self.order(fatura)
-    cnab = File.open("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt", 'w+')
+    data = File.open("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt", 'w+')
     JSON.parse(File.read(fatura), symbolize_names: true).each { |order| 
             new(**order)
-            cnab.write('B' + order[:token] + order[:due_date] + order[:payment_method] + order[:status] + order[:amount] + "\n")
+            data.write('B' + order[:token] + order[:due_date] + order[:payment_method] + order[:status] + amount_validates(order) + "\n")
     }
-    cnab.close
+    data.close
   end 
 
-  def validates
-    amount = cobranca.amount.gsub(/[R$,]/, 'R$' => '', ',' => '')
+  def self.amount_validates(order)
+    amount = order[:amount].to_s
+    amount = amount.gsub(/[R$,]/, 'R$' => '', ',' => '')
     amount = '%010d'%amount
   end
 end
