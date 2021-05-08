@@ -1,13 +1,13 @@
 class Fatura
   
-  attr_accessor :token, :status, :payment_date, :payment_type, :invoice_amount
+  attr_accessor :token, :status, :due_date, :payment_method, :amount
 
-  def initialize(token: , status: , payment_date: , payment_type: , invoice_amount: )
+  def initialize(token: , status: , due_date: , payment_method: , amount: )
     @token = token
     @status = status
-    @payment_date = payment_date
-    @payment_type = payment_type
-    @invoice_amount = invoice_amount
+    @due_date = due_date
+    @payment_method = payment_method
+    @amount = amount
   end
 
   def self.order(fatura)
@@ -20,7 +20,7 @@ class Fatura
   end 
 
   def validates
-    invoice_amount = cobranca.invoice_amount.gsub(/[R$,]/, 'R$' => '', ',' => '')
-    invoice_amount = '%010d'%invoice_amount
+    amount = cobranca.amount.gsub(/[R$,]/, 'R$' => '', ',' => '')
+    amount = '%010d'%amount
   end
 end
