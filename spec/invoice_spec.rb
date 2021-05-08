@@ -27,11 +27,24 @@ describe Invoice do
     expect(File.read(data_path)).to include('20200425')
   end
 
-  it 'Converte 1 json em mais objetos e salva em txt' do
+  it 'Converte json em mais objetos e salva em txt' do
     Invoice.order('invoices-iugu/fatura004.json')
     data_path = "data/#{Time.now.strftime('%Y%m%d%H%M%S')}_Boleto_emissao.txt"
     expect(File.read(data_path)).to include('b7d933ca217964802cce9abc9a75da96372fbfef')
     expect(File.read(data_path)).to include('01')
     expect(File.read(data_path)).to include('20200425')
+    expect(File.read(data_path)).to include('b415933ca217964802cce9abc9a75da96372fbfe')
+  end
+
+  it 'Converte json em arquivo de emissão' do
+    Invoice.order('invoices-iugu/fatura004.json')
+    data_path = "data/#{Time.now.strftime('%Y%m%d%H%M%S')}_Boleto_emissao.txt"
+
+    expect(File.read(data_path)).to include('b7d933ca217964802cce9abc9a75da96372fbfef')
+    expect(File.read(data_path)).to include('01')
+    expect(File.read(data_path)).to include('20200425')
+    expect(File.read(data_path)).to include('b415933ca217964802cce9abc9a75da96372fbfe')
+    expect(File.read(data_path)).to include('F 000000000035000')
+    expect(File.read(data_path)).to include('H 00003')
   end
 end
