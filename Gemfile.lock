@@ -7,6 +7,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    ast (2.4.2)
     concurrent-ruby (1.1.8)
     connection_pool (2.2.5)
     diff-lcs (1.4.4)
@@ -23,9 +24,15 @@ GEM
       concurrent-ruby (~> 1.0)
     minitest (5.14.4)
     multipart-post (2.1.1)
+    parallel (1.20.1)
+    parser (3.0.1.1)
+      ast (~> 2.4.1)
     rack (2.2.3)
+    rainbow (3.0.0)
     rake (13.0.3)
     redis (4.2.5)
+    regexp_parser (2.1.1)
+    rexml (3.2.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -39,6 +46,18 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
+    rubocop (1.14.0)
+      parallel (~> 1.10)
+      parser (>= 3.0.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml
+      rubocop-ast (>= 1.5.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.5.0)
+      parser (>= 3.0.1.1)
+    ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     sidekiq (6.2.1)
       connection_pool (>= 2.2.2)
@@ -46,6 +65,7 @@ GEM
       redis (>= 4.2.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    unicode-display_width (2.0.0)
     zeitwerk (2.4.2)
 
 PLATFORMS
@@ -56,6 +76,7 @@ DEPENDENCIES
   faraday
   rake
   rspec
+  rubocop
   sidekiq
 
 BUNDLED WITH
