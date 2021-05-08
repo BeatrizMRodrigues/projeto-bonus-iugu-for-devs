@@ -22,7 +22,7 @@ describe Invoice do
     
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('b7d933ca217964802cce9abc9a75da96372fbfef')
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Pendente')
-    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('25/04/2020')
+    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('20200425')
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Boleto')
   end
 
@@ -31,7 +31,7 @@ describe Invoice do
     
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('b7d933ca217964802cce9abc9a75da96372fbfef')
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Pendente')
-    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('25/04/2020')
+    expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('20200425')
     expect(File.read("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt")).to include('Boleto')
   end
 end

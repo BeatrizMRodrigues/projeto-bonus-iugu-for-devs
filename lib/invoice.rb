@@ -14,7 +14,7 @@ class Invoice
     data = File.open("data/#{Time.now.strftime("%Y%m%d%H%M%S")}_Boleto_emissao.txt", 'w+')
     JSON.parse(File.read(fatura), symbolize_names: true).each { |order| 
             new(**order)
-            data.write('B' + order[:token] + order[:due_date] + order[:payment_method] + order[:status] + amount_validates(order) + "\n")
+            data.write('B' + order[:token] + due_date(order) + order[:payment_method] + order[:status] + amount_validates(order) + "\n")
     }
     data.close
   end 
@@ -23,5 +23,12 @@ class Invoice
     amount = order[:amount].to_s
     amount = amount.gsub(/[R$,]/, 'R$' => '', ',' => '')
     amount = '%010d'%amount
+  end
+
+  def self.due_date(order)
+    due_date = order[:due_date].to_date.strftime("%Y%m%d")
+  end
+
+  def self.status
   end
 end
