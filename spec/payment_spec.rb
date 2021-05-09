@@ -25,7 +25,7 @@ describe Payment do
     expect(payment.status).to eq '05'
   end
 
-  it 'atualiza o status do pagamento' do
+  xit 'atualiza o status do pagamento' do
     Payment.paid
     data_path = 'data/20210508020023_Boleto_emissao.txt'
     expect(File.read(data_path)).to include('B f5d3a6243562ad4ac26a151e2e46f1e76bb3f14b 20200422 0000002000 05')
